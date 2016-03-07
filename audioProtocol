@@ -1,0 +1,10 @@
+The protocol for basic use of the audio peripheral is extremely simple:
+Just send a Write signal, present data representing the tone you wish it
+to sound, and deassert the Write signal. Notably, the value 0 (also 0x0,
+binary 0b0000, or octal 0o00) signifies to stop making noise.
+
+This exceptionally simple protocol has been integrated into the macro
+assembly language. To use it in a program, simply load the desired value
+into the accumulator, then use the "BEEP ACC" macro to send the signal to
+to peripheral. Please end this beep after an appropriate delay by using the
+same macro to send a zero.
